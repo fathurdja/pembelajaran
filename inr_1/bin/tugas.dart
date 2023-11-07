@@ -4,6 +4,10 @@ abstract class family {
 }
 
 class bapak implements family {
+  String? name;
+  bapak({required String name}) {
+    this.name = name;
+  }
   @override
   void bermain() {
     print("bapak bermain bersama ");
@@ -16,6 +20,10 @@ class bapak implements family {
 }
 
 class ibu implements family {
+  String? name;
+  ibu({required String name}) {
+    this.name = name;
+  }
   @override
   void bermain() {
     print("Ibu hadir dalam bermain");
@@ -27,10 +35,29 @@ class ibu implements family {
   }
 }
 
-void main() {
-  var Mom = ibu();
-  Mom.bermain();
+class anak implements family {
+  String? name;
 
-  var Dad = bapak();
-  Dad.makanBersama();
+  anak({required String name}) {
+    this.name = name;
+  }
+  @override
+  void bermain() {
+    print("$name ikut bermain");
+  }
+  @override
+  void makanBersama() {
+    // TODO: implement makanBersama
+  }
+}
+
+void main() {
+  List<Map<String,family>> allFamily = [
+    {'anak': anak(name: 'fafa')},
+    {'bapak': bapak(name: 'jaka')},
+    {'ibu': ibu(name: 'mei')},
+  ];
+
+  allFamily[0]['anak']!.bermain();
+ 
 }
